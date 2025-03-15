@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🌙 Dark mode-stöd med `data-theme` */
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 🎨 TEMA-STILAR */
+:root {
+  --background-light: #f3f4f6;
+  --text-light: #1f2937;
+  --background-dark: #111827;
+  --text-dark: #f3f4f6;
+  --header-light: #ffffff;
+  --footer-light: #d1d5db;
+  --header-dark: #121212;
+  --footer-dark: #252525;
+  --card-light: #e5e7eb;
+  --card-dark: #374151;
+}
+
+/* 🌞 Ljust läge */
+html[data-theme="light"] {
+  background-color: var(--background-light) !important;
+  color: var(--text-light) !important;
+}
+
+html[data-theme="light"] .header, 
+html[data-theme="light"] .footer {
+  background-color: var(--header-light) !important;
+  color: var(--text-light) !important;
+}
+
+/* 🌙 Mörkt läge */
+html[data-theme="dark"] {
+  background-color: var(--background-dark) !important;
+  color: var(--text-dark) !important;
+}
+
+html[data-theme="dark"] .header, 
+html[data-theme="dark"] .footer {
+  background-color: var(--header-dark) !important;
+  color: var(--text-dark) !important;
+}
+
+/* 🔥 Övergångseffekt */
+.header, .footer, body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 🛠 FIXAR ATT ALLA SEKTIONER HAR SAMMA FÄRG OCH TAR BORT "BARSEN" */
+.section {
+  background-color: var(--background-light) !important; /* Light mode */
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+html[data-theme="dark"] .section {
+  background-color: var(--background-dark) !important;
+}
+
+/* 🔧 Specifika sektioner som behöver fixas */
+.how-it-works,
+.money-transfer,
+.clients-section,
+.faq-section,
+.features-section {
+  background-color: var(--background-light) !important;
+}
+
+html[data-theme="dark"] .how-it-works,
+html[data-theme="dark"] .money-transfer,
+html[data-theme="dark"] .clients-section,
+html[data-theme="dark"] .faq-section,
+html[data-theme="dark"] .features-section {
+  background-color: var(--background-dark) !important;
+}
+
+/* 🔄 Tar bort bars i BÅDE light och dark mode */
+.section:first-of-type {
+  margin-top: 0 !important;
+}
+
+.section:last-of-type {
+  margin-bottom: 0 !important;
+}
+
+/* 🛠 Tar bort oönskade rader mellan sektioner */
+.section + .section {
+  border-top: none !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* 🔄 Extra fix för att ingen annan färg lyser igenom */
+body {
+  background-color: var(--background-light) !important;
+  margin: 0;
+  padding: 0;
+}
+
+html[data-theme="dark"] body {
+  background-color: var(--background-dark) !important;
+}
+
+/* 🔄 Anpassning för mindre skärmar */
+@media (max-width: 768px) {
+  .section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .how-it-works,
+  .money-transfer,
+  .clients-section,
+  .faq-section,
+  .features-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
