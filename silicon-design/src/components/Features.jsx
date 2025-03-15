@@ -5,7 +5,7 @@ const Features = () => {
     <section className="py-24 bg-gray-100 dark:bg-gray-900 w-full">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
         
-        {/* 📱 Mobilbilden till vänster */}
+        {/* Bilden till vänster */}
         <div data-aos="fade-right" className="w-full md:w-1/2 flex justify-center">
           <img
             src="/images/mobilnr4förfeatures.png"
@@ -14,13 +14,14 @@ const Features = () => {
           />
         </div>
 
-        {/* 📋 Feature-listan till höger */}
+        {/* Feature-listan och ikoner till höger */}
         <div className="w-full md:w-1/2 flex flex-col justify-center">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">App Features</h2>
           <p className="text-gray-600 dark:text-gray-300 mb-6">
             Discover powerful features designed to simplify your finances and protect your privacy.
           </p>
 
+          {/* Här kommer jag att använda mig av gridkonceptet precis som tidigare, men denna gång för att visa features */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FeatureCard icon="💳" title="Easy Payments" description="Seamless and instant transactions directly from your phone." />
             <FeatureCard icon="🔒" title="Data Security" description="Advanced security measures ensure your financial data is always safe." />
@@ -35,6 +36,7 @@ const Features = () => {
   );
 };
 
+// Feature komponenten som används i Features
 const FeatureCard = ({ icon, title, description }) => (
   <div data-aos="fade-up" className="flex items-center space-x-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
     <span className="text-4xl">{icon}</span>

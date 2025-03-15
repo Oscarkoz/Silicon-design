@@ -6,7 +6,7 @@ const Auth = ({ isOpen, onClose, onLogin }) => {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
-  // Ladda sparad användare vid sidstart
+  // Försök att ladda sparad användare vid start av hemsidan
   useEffect(() => {
     const user = localStorage.getItem("loggedInUser");
     if (user) {
@@ -17,11 +17,14 @@ const Auth = ({ isOpen, onClose, onLogin }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Denna sats körs för att se om emailen innehåller @
     if (!email.includes("@")) {
       setMessage("Please enter a valid email.");
       return;
     }
 
+    // Samma sats som tidigare fast för lösenordet.
+    // Lösenordet måste vara sex tecken långt.
     if (password.length < 6) {
       setMessage("Password must be at least 6 characters.");
       return;
@@ -30,19 +33,23 @@ const Auth = ({ isOpen, onClose, onLogin }) => {
     const users = JSON.parse(localStorage.getItem("users")) || {};
 
     if (isRegister) {
+      // Denna if sats skapar en ny användare om emailen inte redan finns.
+      // Om emailen redan finns så visas ett felmeddelande.
       if (users[email]) {
         setMessage("User already exists.");
       } else {
         users[email] = password;
         localStorage.setItem("users", JSON.stringify(users));
+        // Därefter får användaren ett meddelande att kontot är skapat och att de kan logga in.
         setMessage("Account created! You can now log in.");
         setIsRegister(false);
       }
     } else {
+      // Denna if sats kollar om emailen finns i users och om lösenordet stämmer.
       if (users[email] === password) {
         localStorage.setItem("loggedInUser", email);
         onLogin(email);
-        onClose(); // Stäng popup vid lyckad inloggning
+        onClose(); // Stäng popupen vid lyckad inloggning
       } else {
         setMessage("Invalid email or password.");
       }
@@ -51,6 +58,9 @@ const Auth = ({ isOpen, onClose, onLogin }) => {
 
   if (!isOpen) return null;
 
+
+  // Nedanför skapar jag div klasser som innehåller en knapp för att stänga popupen. Dessutom använder jag mig av
+  // verktyg som vi har använt tidigare i kursen såsom "justify-center" alltså flexbox. 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 transition-opacity duration-300">
       <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-md relative transition-all transform scale-95 opacity-0 animate-fade-in">

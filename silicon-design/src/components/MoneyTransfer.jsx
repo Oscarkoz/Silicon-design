@@ -5,7 +5,7 @@ const MoneyTransfer = () => {
     <section className="py-24 bg-gray-100 dark:bg-gray-900">
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
-        {/* Vänster sida: Textsektion */}
+        {/* Vänster sida: Text */}
         <div data-aos="fade-right">
           <h2 className="text-5xl font-bold text-gray-900 dark:text-white">
             Make Your Money Transfer Simple and Clear

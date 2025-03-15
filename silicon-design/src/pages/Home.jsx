@@ -8,7 +8,7 @@ import FAQ from "../components/FAQ";
 export default function Home() {
   return (
     <div className="w-full">
-      {/* 🎯 Welcome Section */}
+      {/* Hem sektionen, välkomnar nya användare till hemsidan. */}
       <section 
         id="welcome"
         className="h-screen flex flex-col justify-center items-center text-center px-6 bg-gray-100 dark:bg-gray-900"
@@ -22,7 +22,7 @@ export default function Home() {
         </p>
       </section>
 
-      {/* 🎯 Hero Section */}
+      {/* Hur det funkar sektionen. */}
       <section 
         id="hero"
         className="h-screen flex flex-col justify-center items-center text-center px-6 bg-gray-100 dark:bg-gray-900"
@@ -36,27 +36,27 @@ export default function Home() {
         </p>
       </section>
 
-      {/* 🎯 Features Section */}
+      {/* Features/Drag sektionen */}
       <section id="features" className="section">
         <Features />
       </section>
 
-      {/* 🎯 How It Works Section */}
+      {/* Hur appen funkar sektionen */}
       <section id="how-it-works" className="section">
         <HowItWorks />
       </section>
 
-      {/* 🎯 Money Transfer Section */}
+      {/* Sektionen för att visa att man kan överföra pengar */}
       <section id="money-transfer" className="section">
         <MoneyTransfer />
       </section>
 
-      {/* 🎯 Clients Testimonials */}
+      {/* Klienter sektionen */}
       <section id="clients" className="section">
         <Clients />
       </section>
 
-      {/* 🎯 FAQ Section */}
+      {/* FAQ sektionen */}
       <section id="faq" className="section">
         <FAQ />
       </section>

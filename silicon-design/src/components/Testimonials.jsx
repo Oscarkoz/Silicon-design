@@ -15,11 +15,14 @@ const Testimonials = () => {
     <section className="py-20 bg-gray-100 dark:bg-gray-900" data-aos="fade-up">
       <div className="max-w-6xl mx-auto px-6 text-center">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+          {/* Har förklarat det redan tidigare i en annan javascript-fil men jag kan göra det igen */}
+          {/* Här använder jag mig av testimonials-data från Web API:et för att visa vad kunderna tycker om appen */}
           Clients are Loving Our App
         </h2>
         <p className="mt-4 text-gray-600 dark:text-gray-300">
           Our users love the simplicity and security of our app. See what they’re saying about us.
         </p>
+        {/* Återigen använder jag mig av gridkonceptet som vi lärde oss i Övningsuppgift 2, Responsive Design */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
           {testimonials.map((testimonial) => (
             <div

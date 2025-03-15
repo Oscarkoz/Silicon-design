@@ -5,6 +5,10 @@ export default function Contact() {
   const [message, setMessage] = useState("");
   const [confirmation, setConfirmation] = useState("");
 
+  // Har märkt från denna uppgift att javascript kodning är rätt så likt python kodning
+  // Dessutom så är det rätt så enkelt att förstå vad som händer i koden bara genom att läsa igenom den
+  // Det är ett väldigt framåtgående språk som jag tycker är väldigt kul att jobba med. 
+  // Nåväl, här skapar jag en funktion som hanterar formuläret och ser till att emailen innehåller @ och att meddelandet är minst 5 tecken långt.
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email.includes("@") || message.trim().length < 5) {
@@ -12,6 +16,8 @@ export default function Contact() {
       return;
     }
 
+    // Fick aldrig till det med att faktiskt skicka iväg ett riktigt mail, men jag skapade en funktion som simulerar att mailet har skickats.
+    // Efter att man har skickat iväg mailet så visas ett meddelande att mailet har skickats och att de kommer att svara snart.
     setTimeout(() => {
       setConfirmation("Your message has been sent! We will get back to you soon.");
       setEmail("");

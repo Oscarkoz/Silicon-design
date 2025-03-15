@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 🌙 Dark mode-stöd med `data-theme` */
+/* Dark mode-stöd med `data-theme` */
 html {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* 🎨 TEMA-STILAR */
+/* Olika stilar av tema */
 :root {
   --background-light: #f3f4f6;
   --text-light: #1f2937;
@@ -21,7 +21,7 @@ html {
   --card-dark: #374151;
 }
 
-/* 🌞 Ljust läge */
+/* Ljust läge */
 html[data-theme="light"] {
   background-color: var(--background-light) !important;
   color: var(--text-light) !important;
@@ -33,7 +33,7 @@ html[data-theme="light"] .footer {
   color: var(--text-light) !important;
 }
 
-/* 🌙 Mörkt läge */
+/* Mörkt läge */
 html[data-theme="dark"] {
   background-color: var(--background-dark) !important;
   color: var(--text-dark) !important;
@@ -45,14 +45,16 @@ html[data-theme="dark"] .footer {
   color: var(--text-dark) !important;
 }
 
-/* 🔥 Övergångseffekt */
+/* Övergångseffekt */
 .header, .footer, body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* 🛠 FIXAR ATT ALLA SEKTIONER HAR SAMMA FÄRG OCH TAR BORT "BARSEN" */
+/* Nedan fick jag hjälp av CHATGPT att få bort "barsen" som jag kallade dem. 
+Det var padding problem i hemsidan som orsakade att vissa delar blev missfärgade eller fick en
+avvikande färg åtminstone. Koden nedan lades till för att fixa problemet. */
 .section {
-  background-color: var(--background-light) !important; /* Light mode */
+  background-color: var(--background-light) !important; 
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
@@ -61,7 +63,8 @@ html[data-theme="dark"] .section {
   background-color: var(--background-dark) !important;
 }
 
-/* 🔧 Specifika sektioner som behöver fixas */
+/* Det var endast specifika sektioner som behövdes fixas, antagligen på grund av API tillämpningen eller på grund av
+att jag hade mycket text / bilder där, är inte helt säker. */
 .how-it-works,
 .money-transfer,
 .clients-section,
@@ -78,7 +81,8 @@ html[data-theme="dark"] .features-section {
   background-color: var(--background-dark) !important;
 }
 
-/* 🔄 Tar bort bars i BÅDE light och dark mode */
+/* Tar bort bars i BÅDE ljustemat och mörkertemat, när jag fixade mörkertemat så kom barsen fram i ljustemat istället
+så då fick de bli att fixa båda istället. */
 .section:first-of-type {
   margin-top: 0 !important;
 }
@@ -87,14 +91,14 @@ html[data-theme="dark"] .features-section {
   margin-bottom: 0 !important;
 }
 
-/* 🛠 Tar bort oönskade rader mellan sektioner */
+/* Tar bort oönskade rader mellan sektioner, sätter en !important för att beskriva för sidan att det är högsta prioritet. */
 .section + .section {
   border-top: none !important;
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
 
-/* 🔄 Extra fix för att ingen annan färg lyser igenom */
+/* Extra fix för att ingen annan färg lyser igenom */
 body {
   background-color: var(--background-light) !important;
   margin: 0;
@@ -105,7 +109,7 @@ html[data-theme="dark"] body {
   background-color: var(--background-dark) !important;
 }
 
-/* 🔄 Anpassning för mindre skärmar */
+/* Anpassning för mindre skärmar */
 @media (max-width: 768px) {
   .section {
     padding-top: 3rem;

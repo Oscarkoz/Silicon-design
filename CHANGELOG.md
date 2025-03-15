@@ -18,4 +18,6 @@ Lördag 2025-03-15
 - Flyttade på element på hemsidan så att det ska se mer centrerat ut, nästan som en "wrapper"
 - Har ändrat bildstorlekar och positioner och låtit input.css / output.css ta hand om storlek samt position. 
 - Fick bort gråa mellanrum mellan sektioner genom att ändra padding och margin mellan sektioner.
-
+- Fick hjälp av Github Copilot att justera platsering och färger på layouten
+- Tog även hjälp från CHATGPT för att få förslag på förbättringar i koden dessutom större ändringar, som att förflytta stor del av färghantering/placering till input.css istället för att ha allting i varje sektionsfil, alltså Auth.jsx, FAQ.jsx etc...
+- Slutligen lade jag till kommentarer för att visa att jag förstår vad koden gör, jag förklarade även hur jag tänkte när jag gjorde projektet eller om jag inte förstår något. 

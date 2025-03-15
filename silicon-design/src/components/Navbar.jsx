@@ -5,6 +5,7 @@ import logo from "../assets/logo.png";
 import DropdownMenu from "./DropdownMenu";
 import { saveUserData, loadUserData, deleteUserData } from "../utils/fileUtils";
 
+// Här skapar jag en Navbar som jag använder för att navigera mellan sidor och logga in/ut ur.
 export default function Navbar({ toggleTheme, theme }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
@@ -16,6 +17,7 @@ export default function Navbar({ toggleTheme, theme }) {
   const location = useLocation();
   const navigate = useNavigate();
 
+  // Försök att ladda sparad användare vid start av hemsidan
   useEffect(() => {
     const userData = loadUserData();
     if (userData) {
@@ -24,12 +26,14 @@ export default function Navbar({ toggleTheme, theme }) {
     }
   }, []);
 
+  // Denna funktion hanterar autentiseringen av användaren och ser om emailen innehåller @ och om lösenordet är minst 6 tecken långt.
   const handleAuth = () => {
     if (!email.includes("@") || password.length < 6) {
       alert("Please enter a valid email and a password with at least 6 characters.");
       return;
     }
 
+    // Om användaren är i registreringsläget så sparas användaredata och ett meddelande visas att kontot är skapat.
     if (isRegistering) {
       saveUserData(email, password);
       alert("Account created successfully! You can now log in.");
@@ -44,7 +48,7 @@ export default function Navbar({ toggleTheme, theme }) {
       }
     }
   };
-
+// Detta är en funktion som hanterar utloggningen av användaren.
   const handleLogout = () => {
     deleteUserData();
     setIsLoggedIn(false);
@@ -52,6 +56,8 @@ export default function Navbar({ toggleTheme, theme }) {
     setPassword("");
   };
 
+  // Denna funktion hanterar navigeringen till Features-sektionen på sidan. 
+  // Hade lite problem i skapandet av hemsidan då jag inte kunde navigera till Features när jag klickade på Features i menyn.
   const navigateTo = useNavigate();
   const handleFeaturesClick = (e) => {
     e.preventDefault();
@@ -62,6 +68,7 @@ export default function Navbar({ toggleTheme, theme }) {
     }
   };
 
+  // Samma princip här som i handleFeaturesClick, fast för att navigera till startsidan eller "hem" och scrolla till toppen av sidan.
   const handleHomeClick = (e) => {
     e.preventDefault();
     if (location.pathname !== "/") {
@@ -75,6 +82,7 @@ export default function Navbar({ toggleTheme, theme }) {
     <header className="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 shadow-md z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <div className="flex items-center space-x-4">
+          {/* Här lägger jag till loggan för hemsidan och företagetsnamnet, alltså Silicon. Precis som på figma filen visade med layouten. */}
           <img src={logo} alt="Silicon Logo" className="h-8 w-auto" />
           <h1 className="text-xl font-bold text-gray-900 dark:text-white">Silicon</h1>
 
@@ -91,6 +99,7 @@ export default function Navbar({ toggleTheme, theme }) {
           </nav>
         </div>
 
+        {/* Här lägger jag till en Dark Mode Toggle och inloggningsknapp */}
         <div className="hidden md:flex items-center space-x-6 ml-auto">
           <label className="flex items-center cursor-pointer">
             <span className="text-gray-700 dark:text-gray-300">Dark Mode</span>
@@ -122,7 +131,7 @@ export default function Navbar({ toggleTheme, theme }) {
             </button>
           )}
         </div>
-
+        {/* Här lägger jag till en hamburgermeny för att visa menyn på mobilen. Utan att skapa problem för skrivsanvändare. */}
         <button className="md:hidden text-gray-900 dark:text-white" onClick={() => setMenuOpen(!menuOpen)}>
           <FiMenu size={28} />
         </button>
@@ -130,6 +139,7 @@ export default function Navbar({ toggleTheme, theme }) {
 
       <DropdownMenu isOpen={menuOpen} closeMenu={() => setMenuOpen(false)} toggleTheme={toggleTheme} theme={theme} />
 
+      {/* Här skapar jag en popup för att logga in och registrera sig. */}
       {isAuthOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-96 text-center">

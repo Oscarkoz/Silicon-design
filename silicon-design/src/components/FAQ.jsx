@@ -6,6 +6,8 @@ const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [email, setEmail] = useState("");
 
+  // Precis som jag beskriv tidigare i Clients.jsx så kommer jag att använda useEffect för att hämta
+  // data från Web API:et som https://kyhn24.azurewebsites.net/api/faq har gett oss.
   useEffect(() => {
     axios
       .get("https://kyhn24.azurewebsites.net/api/faq")
@@ -13,12 +15,14 @@ const FAQ = () => {
       .catch((error) => console.error("Error fetching FAQ:", error));
   }, []);
 
+  // Samma princip här som i Auth.jsx, checka om emailen innehåller @
   const handleSubscribe = () => {
     if (!email.includes("@")) {
       alert("Please enter a valid email address.");
       return;
     }
 
+    // Skicka emailen till Web API:et för att prenumerera på nyhetsbrevet.
     axios
       .post("https://kyhn24.azurewebsites.net/api/subscribe", { email })
       .then((response) => {
@@ -36,6 +40,7 @@ const FAQ = () => {
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-start justify-center">
         <div className="faq-left" data-aos="fade-right">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            {/* Lägger till en titel och beskrivning för sektionen */}
             Any questions?<br />Check out the FAQs
           </h2>
           <p className="text-gray-600 dark:text-gray-300">
@@ -59,6 +64,7 @@ const FAQ = () => {
           </div>
         </div>
 
+        {/* Här kommer jag att använda en lista för att visa alla FAQ, som både är genererade från CHATGPT och API:ET */}
         <div className="faq-right" data-aos="fade-left">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Frequently Asked Questions</h2>
           <div className="faq-list space-y-4">

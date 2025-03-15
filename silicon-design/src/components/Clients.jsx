@@ -4,6 +4,8 @@ import axios from "axios";
 const Clients = () => {
   const [clients, setClients] = useState([]);
 
+  // Hädanefter kommer vi att använda useEffect för att hämta testimonials-data från Web API:et som 
+  // https://kyhn24.azurewebsites.net/api/testimonials har gett oss.
   useEffect(() => {
     axios
       .get("https://kyhn24.azurewebsites.net/api/testimonials")
@@ -22,7 +24,9 @@ const Clients = () => {
             Our users love the simplicity and security of our app. See what they're saying about us.
           </p>
         </div>
-
+        
+        {/* Här kommer jag att använda mig av gridkonceptet för att visa testimonials */}
+        {/* Precis som jag sa i kommentaren för övningsuppgfiten så kommer det till bra användning här */}
         <div className="mt-8 md:mt-0 md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6" data-aos="fade-left">
           {clients.map((client) => (
             <div key={client.id} className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg flex flex-col space-y-4">
